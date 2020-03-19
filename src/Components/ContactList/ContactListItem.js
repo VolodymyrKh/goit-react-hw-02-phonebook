@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ContactListItem = ({ contactName, tel, onRemoveContact }) => (
+const ContactListItem = ({ name, number, onRemoveContact }) => (
   <li>
-    {contactName}: {tel}
+    {name}: {number}
     <button type="button" onClick={onRemoveContact}>
       Delete
     </button>

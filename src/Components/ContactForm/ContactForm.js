@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 export default class ContactForm extends Component {
   state = {
-    contactName: '',
-    tel: '',
+    name: '',
+    number: '',
   };
 
   handleChange = e => {
@@ -17,19 +17,19 @@ export default class ContactForm extends Component {
     e.preventDefault();
 
     this.props.onAddContact({ ...this.state });
-    this.setState({ contactName: '', tel: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
-    const { contactName, tel } = this.state;
+    const { name, number } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input
             type="text"
-            name="contactName"
-            value={contactName}
+            name="name"
+            value={name}
             onChange={this.handleChange}
             placeholder="Please enter name"
           />
@@ -39,8 +39,8 @@ export default class ContactForm extends Component {
           Number:
           <input
             type="tel"
-            name="tel"
-            value={tel}
+            name="number"
+            value={number}
             onChange={this.handleChange}
             placeholder="Please enter phone nr"
           />
