@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import uuid from 'react-uuid';
 import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
+import ContactList from './ContactList1/ContactList';
 import Filter from './Filter/Filter';
-// import styles from './App.module.css';
+import styles from './App.module.css';
 
 const filterContacts = (filter, contacts) => {
   return contacts.filter(contact =>
@@ -57,10 +57,10 @@ export default class App extends Component {
     // console.log(filteredContacts);
     return (
       <>
-        <h2 >Phonebook</h2>
+        <h2 className={styles.title}>Phonebook</h2>
         <ContactForm onAddContact={this.addContact} />
 
-        <h3 >Contacts</h3>
+        <h3 className={styles.title}>Contacts</h3>
         <Filter value={filter} onChangeFilter={this.changeFilter} />
 
         {contacts.length > 0 && (

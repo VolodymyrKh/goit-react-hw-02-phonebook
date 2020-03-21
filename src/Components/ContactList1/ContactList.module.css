@@ -1,0 +1,30 @@
+.contactList {
+  margin: 0;
+  font-family: Roboto;
+  font-size: 15px;
+  padding-inline-start: 30px;
+}
+
+.mr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteButton {
+  width: 50px;
+  height: 20px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.item {
+  line-height: 30px;
+  width: 300px;
+  /* display: flex; */
+  /* justify-content: space-between; */
+}

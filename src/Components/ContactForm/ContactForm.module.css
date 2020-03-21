@@ -28,6 +28,10 @@
   border-radius: 2px;
 }
 
+.addButton:hover {
+  cursor: pointer;
+}
+
 .input {
   padding: 3px;
   font-size: 12px;

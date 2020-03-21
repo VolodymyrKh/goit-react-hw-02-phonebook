@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styles from './'
+import styles from './ContactList.module.css';
+
+
 
 const ContactListItem = ({ name, number, onRemoveContact }) => (
-  <li>
-    {name}: {number}
-    <button type="button" onClick={onRemoveContact}>
+  <li className={styles.item}>
+    <span className={styles.mr}>{name}:  {number}
+    <button className={styles.deleteButton} type="button" onClick={onRemoveContact}>
       Delete
-    </button>
+    </button></span>
   </li>
 );
 
