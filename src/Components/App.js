@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+
 import uuid from 'react-uuid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+// import styles from './App.module.css';
 
 const filterContacts = (filter, contacts) => {
   return contacts.filter(contact =>
@@ -27,6 +28,13 @@ export default class App extends Component {
   };
 
   addContact = contact => {
+    const stateNames = this.state.contacts.map(({ name }) => name);
+
+    if (stateNames.includes(contact.name)) {
+      alert(`${contact.name} is already in contact list`);
+      return;
+    }
+
     const contactToAdd = {
       ...contact,
       id: uuid(),
@@ -49,14 +57,17 @@ export default class App extends Component {
     // console.log(filteredContacts);
     return (
       <>
-        <h2>Phonebook</h2>
+        <h2 >Phonebook</h2>
         <ContactForm onAddContact={this.addContact} />
 
-        <h3>Contacts</h3>
+        <h3 >Contacts</h3>
         <Filter value={filter} onChangeFilter={this.changeFilter} />
 
         {contacts.length > 0 && (
-          <ContactList items={filteredContacts} onRemoveContact={this.removeContact} />
+          <ContactList
+            items={filteredContacts}
+            onRemoveContact={this.removeContact}
+          />
         )}
       </>
     );

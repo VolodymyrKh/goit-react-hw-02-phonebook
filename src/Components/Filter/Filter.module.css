@@ -1,0 +1,19 @@
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 160px;
+  height: 45px;
+  font-family: Roboto;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.input {
+    padding: 3px;
+    font-size: 12px;
+    border-radius: 2px;
+  }
+  
+
+
