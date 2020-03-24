@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import uuid from 'react-uuid';
 import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList1/ContactList';
+import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import styles from './App.module.css';
 
