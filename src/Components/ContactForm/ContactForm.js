@@ -25,6 +25,8 @@ export default class ContactForm extends Component {
     this.setState({ name: '', number: '' });
   };
 
+  
+
   render() {
     const { name, number } = this.state;
     return (

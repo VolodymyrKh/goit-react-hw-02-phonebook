@@ -51,10 +51,23 @@ export default class App extends Component {
     }));
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
+  componentDidMount() {
+    const persitedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (persitedContacts) {
+      this.setState({ contacts: persitedContacts });
+    }
+  }
+
   render() {
     const { contacts, filter } = this.state;
     const filteredContacts = filterContacts(filter, contacts);
-    // console.log(filteredContacts);
+
     return (
       <>
         <h2 className={styles.title}>Phonebook</h2>
