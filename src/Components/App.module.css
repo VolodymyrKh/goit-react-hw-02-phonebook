@@ -3,4 +3,7 @@
     margin: 0;
     padding: 0;
     margin-bottom: 15px;
+    display: inline-block;
+    color: rgb(69, 72, 241);
+  
 }

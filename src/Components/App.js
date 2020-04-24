@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-
+import {CSSTransition} from 'react-transition-group'
 import uuid from 'react-uuid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import titleSlide from '../transitions/titleSlide.module.css'
 import styles from './App.module.css';
+import popTransition from '../transitions/pop.module.css';
 
 const filterContacts = (filter, contacts) => {
   return contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase()),
   );
 };
+
 
 export default class App extends Component {
   state = {
@@ -21,6 +24,7 @@ export default class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+    titleAnimation: false
   };
 
   changeFilter = e => {
@@ -51,32 +55,39 @@ export default class App extends Component {
     }));
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.contacts !== this.state.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.contacts !== this.state.contacts) {
+  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  //   }
+  // }
 
   componentDidMount() {
-    const persitedContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (persitedContacts) {
-      this.setState({ contacts: persitedContacts });
-    }
+    // const persitedContacts = JSON.parse(localStorage.getItem('contacts'));
+    // if (persitedContacts) {
+    //   this.setState({ contacts: persitedContacts });
+    // }
+    this.setState({titleAnimation:true})
   }
 
   render() {
-    const { contacts, filter } = this.state;
+    const { contacts, filter, titleAnimation } = this.state;
     const filteredContacts = filterContacts(filter, contacts);
 
     return (
       <>
+      <CSSTransition in={titleAnimation} timeout={500} classNames={titleSlide}>
         <h2 className={styles.title}>Phonebook</h2>
+        </CSSTransition>  
+
         <ContactForm onAddContact={this.addContact} />
 
         <h3 className={styles.title}>Contacts</h3>
-        {contacts.length > 1 && (
+        {/* {contacts.length > 1 && ( */}
+          <CSSTransition in={contacts.length > 1} timeout={250} classNames={popTransition} unmountOnExit
+        >
           <Filter value={filter} onChangeFilter={this.changeFilter} />
-        )}
+        {/* )} */}
+        </CSSTransition>
 
         {contacts.length > 0 && (
           <ContactList
